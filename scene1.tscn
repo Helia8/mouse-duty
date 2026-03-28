@@ -9,12 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://b25dm5kheft4n" path="res://sprites/walk/0006.png" id="7_btxjs"]
 [ext_resource type="Texture2D" uid="uid://da51pr1mloy26" path="res://sprites/walk/0007.png" id="8_eptys"]
 [ext_resource type="Texture2D" uid="uid://1itcgltrjwtm" path="res://sprites/walk/0008.png" id="9_417ge"]
+[ext_resource type="Texture2D" uid="uid://b737xnpscukga" path="res://sprites/room_main.png" id="10_ivjb3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqyvl"]
 size = Vector2(1147, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otv2m"]
-size = Vector2(150.5, 121.017365)
+size = Vector2(150.5, 42.961807)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vfwod"]
 animations = [{
@@ -48,11 +49,48 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ki3iq"]
-size = Vector2(59.35498, 666)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_otv2m"]
 radius = 87.91281
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ivjb3"]
+a = Vector2(603, -305)
+b = Vector2(-17, 8)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i8grw"]
+b = Vector2(252, 124)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xw712"]
+a = Vector2(-3, 0)
+b = Vector2(-491, -244)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pcdol"]
+b = Vector2(-1, -418)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_btxjs"]
+b = Vector2(-7, -420)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_eptys"]
+b = Vector2(-249, -127)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_417ge"]
+b = Vector2(260, 131)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vfwod"]
+b = Vector2(-0.4171753, 113.26666)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_igsrk"]
+b = Vector2(-165.96652, 84.449036)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_di5qy"]
+a = Vector2(2.477295, 0.32141113)
+b = Vector2(2.477295, -111.67859)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1b2e6"]
+a = Vector2(-4.7824707, 3.9863281)
+b = Vector2(426.21753, -1.0136719)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r7qbo"]
+a = Vector2(-179.99994, 101.25)
 
 [node name="Node" type="Node" unique_id=486720173]
 
@@ -62,16 +100,17 @@ radius = 87.91281
 position = Vector2(460, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D" unique_id=1301251452]
-position = Vector2(115.5, 0)
+position = Vector2(-2, -461)
 shape = SubResource("RectangleShape2D_hqyvl")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="scene1" unique_id=1855870532]
-position = Vector2(280, 411)
-scale = Vector2(1.0534706, 1.0505321)
+top_level = true
+position = Vector2(1179, 807)
+scale = Vector2(0.802, 0.8)
 script = ExtResource("1_p20re")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/CharacterBody2D" unique_id=1437326975]
-position = Vector2(-0.94924927, 84.306274)
+position = Vector2(1.8985114, 138.97716)
 shape = SubResource("RectangleShape2D_otv2m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="scene1/CharacterBody2D" unique_id=1026956874]
@@ -79,22 +118,106 @@ sprite_frames = SubResource("SpriteFrames_vfwod")
 animation = &"walk"
 frame_progress = 0.2886978
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="scene1" unique_id=1688442946]
-position = Vector2(1152.355, 322.0483)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D2" unique_id=1127227338]
-position = Vector2(-19.67749, -19.04831)
-shape = SubResource("RectangleShape2D_ki3iq")
-
 [node name="Area2D" type="Area2D" parent="scene1" unique_id=1359800454]
-position = Vector2(1024, 117)
+position = Vector2(1555, 675)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/Area2D" unique_id=1492562262]
 shape = SubResource("CircleShape2D_otv2m")
 
 [node name="Camera2D" type="Camera2D" parent="scene1" unique_id=295411562]
-position = Vector2(574, 318)
-enabled = false
+position = Vector2(1096, 666)
+zoom = Vector2(0.55, 0.55)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="scene1" unique_id=1010591011]
+position = Vector2(1239, 1202)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D3" unique_id=1661111111]
+shape = SubResource("SegmentShape2D_ivjb3")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="scene1" unique_id=1694475859]
+position = Vector2(1239, 1202)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D4" unique_id=662592556]
+position = Vector2(-4, 8)
+shape = SubResource("SegmentShape2D_ivjb3")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="scene1" unique_id=1251640647]
+position = Vector2(988, 1081)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D5" unique_id=1981505443]
+shape = SubResource("SegmentShape2D_i8grw")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="scene1" unique_id=347547921]
+position = Vector2(860, 1015)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D6" unique_id=574252938]
+shape = SubResource("SegmentShape2D_xw712")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="scene1" unique_id=1866101515]
+position = Vector2(375, 775)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D7" unique_id=1248509969]
+shape = SubResource("SegmentShape2D_pcdol")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="scene1" unique_id=138605783]
+position = Vector2(6, 133)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D8" unique_id=1251566427]
+position = Vector2(1836, 754)
+shape = SubResource("SegmentShape2D_btxjs")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="scene1" unique_id=17402797]
+position = Vector2(1840, 887)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D9" unique_id=1669429009]
+shape = SubResource("SegmentShape2D_eptys")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="scene1" unique_id=347659344]
+position = Vector2(1477, 706)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D10" unique_id=1733775031]
+position = Vector2(-259, -128)
+shape = SubResource("SegmentShape2D_417ge")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="scene1" unique_id=1845420495]
+position = Vector2(778.4172, 576.73334)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D2" unique_id=1077647052]
+shape = SubResource("SegmentShape2D_vfwod")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="scene1" unique_id=1068363258]
+position = Vector2(512.77325, 701.44073)
+scale = Vector2(0.8, 0.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D11" unique_id=846803452]
+shape = SubResource("SegmentShape2D_igsrk")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="scene1" unique_id=886152459]
+position = Vector2(1212.5227, 683.6786)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D12" unique_id=855012610]
+shape = SubResource("SegmentShape2D_di5qy")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="scene1" unique_id=1300334859]
+position = Vector2(785.7825, 688.0137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D13" unique_id=1266667149]
+position = Vector2(-4.7824707, -1.0136719)
+shape = SubResource("SegmentShape2D_1b2e6")
+
+[node name="RoomMain" type="Sprite2D" parent="scene1" unique_id=1106890077]
+show_behind_parent = true
+position = Vector2(1107, 640)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_ivjb3")
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="scene1" unique_id=143997433]
+position = Vector2(631.729, 646.9686)
+scale = Vector2(0.8, 0.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D14" unique_id=1215638771]
+position = Vector2(181.58873, -101.21078)
+shape = SubResource("SegmentShape2D_r7qbo")
 
 [connection signal="body_entered" from="scene1/Area2D" to="scene1/CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="scene1/Area2D" to="scene1/CharacterBody2D" method="_on_area_2d_body_exited"]
