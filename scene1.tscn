@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://da51pr1mloy26" path="res://sprites/walk/0007.png" id="8_eptys"]
 [ext_resource type="Texture2D" uid="uid://1itcgltrjwtm" path="res://sprites/walk/0008.png" id="9_417ge"]
 [ext_resource type="Texture2D" uid="uid://b737xnpscukga" path="res://sprites/room_main.png" id="10_ivjb3"]
+[ext_resource type="Script" uid="uid://d2qjtmmfdl4h" path="res://computer_interact.gd" id="11_i8grw"]
+[ext_resource type="Texture2D" uid="uid://cao1r6lgmq2w" path="res://sprites/interaction_wobble/001.png" id="11_xw712"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqyvl"]
 size = Vector2(1147, 66)
@@ -92,12 +94,36 @@ b = Vector2(426.21753, -1.0136719)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_r7qbo"]
 a = Vector2(-179.99994, 101.25)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivjb3"]
+radius = 68.18358
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_g2ved"]
+a = Vector2(2, 10)
+b = Vector2(7, -37)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mhfj7"]
+b = Vector2(47, -46)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_btxjs"]
+radius = 92.021736
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eptys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_xw712")
+}],
+"loop": true,
+"name": &"interaction_wobble",
+"speed": 5.0
+}]
+
 [node name="Node" type="Node" unique_id=486720173]
 
 [node name="scene1" type="Node2D" parent="." unique_id=547889349]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="scene1" unique_id=586385555]
-position = Vector2(460, 0)
+position = Vector2(425, 42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D" unique_id=1301251452]
 position = Vector2(-2, -461)
@@ -105,7 +131,7 @@ shape = SubResource("RectangleShape2D_hqyvl")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="scene1" unique_id=1855870532]
 top_level = true
-position = Vector2(1179, 807)
+position = Vector2(1090, 802)
 scale = Vector2(0.802, 0.8)
 script = ExtResource("1_p20re")
 
@@ -119,7 +145,7 @@ animation = &"walk"
 frame_progress = 0.2886978
 
 [node name="Area2D" type="Area2D" parent="scene1" unique_id=1359800454]
-position = Vector2(1555, 675)
+position = Vector2(1585, 627)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/Area2D" unique_id=1492562262]
 shape = SubResource("CircleShape2D_otv2m")
@@ -173,7 +199,7 @@ position = Vector2(1840, 887)
 shape = SubResource("SegmentShape2D_eptys")
 
 [node name="StaticBody2D10" type="StaticBody2D" parent="scene1" unique_id=347659344]
-position = Vector2(1477, 706)
+position = Vector2(1452, 695)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D10" unique_id=1733775031]
 position = Vector2(-259, -128)
@@ -212,12 +238,51 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("10_ivjb3")
 
 [node name="StaticBody2D14" type="StaticBody2D" parent="scene1" unique_id=143997433]
-position = Vector2(631.729, 646.9686)
+position = Vector2(475, 743)
 scale = Vector2(0.8, 0.8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D14" unique_id=1215638771]
 position = Vector2(181.58873, -101.21078)
 shape = SubResource("SegmentShape2D_r7qbo")
 
+[node name="Area2D2" type="Area2D" parent="scene1" unique_id=632641325]
+position = Vector2(1556, 693)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/Area2D2" unique_id=455290320]
+position = Vector2(406, -18)
+shape = SubResource("CircleShape2D_ivjb3")
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="scene1" unique_id=542262004]
+position = Vector2(1592, 751)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D15" unique_id=1847400416]
+shape = SubResource("SegmentShape2D_g2ved")
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="scene1" unique_id=1395062096]
+position = Vector2(1452, 695)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D16" unique_id=135302019]
+position = Vector2(1, 3)
+shape = SubResource("SegmentShape2D_mhfj7")
+
+[node name="computer_interact" type="Area2D" parent="scene1" unique_id=1734338907]
+position = Vector2(863, 728)
+script = ExtResource("11_i8grw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/computer_interact" unique_id=1033681187]
+position = Vector2(45, -67)
+shape = SubResource("CircleShape2D_btxjs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="scene1/computer_interact" unique_id=1227093969]
+visible = false
+position = Vector2(46.00006, -312)
+scale = Vector2(0.08650284, 0.06651178)
+sprite_frames = SubResource("SpriteFrames_eptys")
+animation = &"interaction_wobble"
+
 [connection signal="body_entered" from="scene1/Area2D" to="scene1/CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="scene1/Area2D" to="scene1/CharacterBody2D" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="scene1/Area2D2" to="scene1/CharacterBody2D" method="_trigger_door_scene1_prepapre"]
+[connection signal="body_exited" from="scene1/Area2D2" to="scene1/CharacterBody2D" method="trigger_door_scene_1_out"]
+[connection signal="body_entered" from="scene1/computer_interact" to="scene1/computer_interact" method="near_computer_enter"]
+[connection signal="body_exited" from="scene1/computer_interact" to="scene1/computer_interact" method="near_computer_exit"]
