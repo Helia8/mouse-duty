@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cp38y4g45k1jp"]
+
+[ext_resource type="Script" uid="uid://h6l42n5cbeea" path="res://character_body_2ds2.gd" id="1_3hvph"]
+[ext_resource type="Texture2D" uid="uid://mblo32a38qhr" path="res://sprites/nina_player.png" id="2_8dm54"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3hvph"]
+radius = 86.34813
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dm54"]
+size = Vector2(1167, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcpy2"]
+size = Vector2(73.5, 658.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g28hq"]
+size = Vector2(155, 113.5)
+
+[node name="Node" type="Node" unique_id=737464078]
+
+[node name="scene2" type="Node2D" parent="." unique_id=1874493268]
+position = Vector2(-1, 0)
+
+[node name="SpawnPoint" type="Node2D" parent="scene2" unique_id=475332215]
+position = Vector2(48, 579)
+
+[node name="Area2D" type="Area2D" parent="scene2" unique_id=443858100]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene2/Area2D" unique_id=813653935]
+position = Vector2(96, 98)
+shape = SubResource("CircleShape2D_3hvph")
+
+[node name="Camera2D" type="Camera2D" parent="scene2" unique_id=1097367107]
+position = Vector2(568, 333)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="scene2" unique_id=1244979382]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene2/StaticBody2D" unique_id=701450789]
+position = Vector2(568, 0)
+shape = SubResource("RectangleShape2D_8dm54")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="scene2" unique_id=452334763]
+position = Vector2(6, 651)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene2/StaticBody2D2" unique_id=568327292]
+position = Vector2(568, 0)
+shape = SubResource("RectangleShape2D_8dm54")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="scene2" unique_id=995013800]
+position = Vector2(709, 288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene2/StaticBody2D3" unique_id=721263174]
+position = Vector2(471.25, 44.75)
+shape = SubResource("RectangleShape2D_jcpy2")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="scene2" unique_id=653457446]
+position = Vector2(108, 457)
+script = ExtResource("1_3hvph")
+
+[node name="NinaPlayer" type="Sprite2D" parent="scene2/CharacterBody2D" unique_id=1167892410]
+texture = ExtResource("2_8dm54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene2/CharacterBody2D" unique_id=1235815218]
+position = Vector2(6, 95)
+shape = SubResource("RectangleShape2D_g28hq")
+
+[connection signal="body_entered" from="scene2/Area2D" to="scene2/CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="scene2/Area2D" to="scene2/CharacterBody2D" method="_on_area_2d_body_exited"]

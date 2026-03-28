@@ -20,7 +20,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("body pos is " )
 	print(body.position)
 	if body == self:
-		get_tree().change_scene_to_file("res://scene2.tscn")
+		get_tree().change_scene_to_file("res://scene1.tscn")
 
 	pass # Replace with function body.
 

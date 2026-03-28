@@ -4,7 +4,7 @@ Game is set in an arctic base.
 You're a scientist tasked with retrieving and sending various meteorological data
 Everyday you wake up in your arctic base and try to accomplish your duties
 However, you must also deal with the maintenance of your base
-Every in game, at random, you'll one or many random events that will
+Every day in game, at random, you'll one or many random events that will
 hinder both your work and survival.
 Your goal is to make it to keep for say 30 days, until you get switched out (ending)
 You may or may not go outside to do some content (fix stuff, get food whatever)
