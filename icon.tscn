@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://7rxtow5u8uog" path="res://icon.svg" id="1_tr34o"]
 
-[node name="Icon" type="Sprite2D" unique_id=30002822]
-position = Vector2(721.5, 217)
-scale = Vector2(6.5546875, 1.921875)
+[node name="Node2D" type="Node2D" unique_id=547889349]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=248744256]
+position = Vector2(638, 249)
+scale = Vector2(4.828125, 6.1953125)
 texture = ExtResource("1_tr34o")
