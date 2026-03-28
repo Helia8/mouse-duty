@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cj0dnt1nsqhlf"]
 
 [ext_resource type="Texture2D" uid="uid://7rxtow5u8uog" path="res://icon.svg" id="1_tr34o"]
+[ext_resource type="Script" uid="uid://blo4gwis44oe6" path="res://icon.gd" id="2_hqyvl"]
 
 [node name="Node2D" type="Node2D" unique_id=547889349]
 
@@ -8,3 +9,4 @@
 position = Vector2(638, 249)
 scale = Vector2(4.828125, 6.1953125)
 texture = ExtResource("1_tr34o")
+script = ExtResource("2_hqyvl")

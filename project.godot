@@ -11,12 +11,18 @@ config_version=5
 [application]
 
 config/name="Mouse-Duty"
+run/main_scene="uid://cj0dnt1nsqhlf"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Mouse-Duty"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [physics]
 
