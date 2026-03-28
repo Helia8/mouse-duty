@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://cp38y4g45k1jp"]
 
 [ext_resource type="Script" uid="uid://h6l42n5cbeea" path="res://character_body_2ds2.gd" id="1_3hvph"]
-[ext_resource type="Texture2D" uid="uid://mblo32a38qhr" path="res://sprites/nina_player.png" id="2_8dm54"]
+[ext_resource type="Texture2D" uid="uid://bmn4lvdym06g0" path="res://sprites/walk/0001.png" id="2_112sm"]
+[ext_resource type="Texture2D" uid="uid://brcp68ji5pgj5" path="res://sprites/walk/0002.png" id="3_vuhtq"]
+[ext_resource type="Texture2D" uid="uid://yhbyal485psi" path="res://sprites/walk/0003.png" id="4_n4bvh"]
+[ext_resource type="Texture2D" uid="uid://5qhf5fqnw0mr" path="res://sprites/walk/0004.png" id="5_33owt"]
+[ext_resource type="Texture2D" uid="uid://70qrbku04awc" path="res://sprites/walk/0005.png" id="6_kup1q"]
+[ext_resource type="Texture2D" uid="uid://b25dm5kheft4n" path="res://sprites/walk/0006.png" id="7_1lry2"]
+[ext_resource type="Texture2D" uid="uid://da51pr1mloy26" path="res://sprites/walk/0007.png" id="8_un2r7"]
+[ext_resource type="Texture2D" uid="uid://1itcgltrjwtm" path="res://sprites/walk/0008.png" id="9_sa2wl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3hvph"]
 radius = 86.34813
@@ -14,6 +21,38 @@ size = Vector2(73.5, 658.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g28hq"]
 size = Vector2(155, 113.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfgdl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_112sm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vuhtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n4bvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_33owt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kup1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1lry2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_un2r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sa2wl")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Node" type="Node" unique_id=737464078]
 
@@ -56,12 +95,14 @@ shape = SubResource("RectangleShape2D_jcpy2")
 position = Vector2(108, 457)
 script = ExtResource("1_3hvph")
 
-[node name="NinaPlayer" type="Sprite2D" parent="scene2/CharacterBody2D" unique_id=1167892410]
-texture = ExtResource("2_8dm54")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene2/CharacterBody2D" unique_id=1235815218]
 position = Vector2(6, 95)
 shape = SubResource("RectangleShape2D_g28hq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="scene2/CharacterBody2D" unique_id=403191175]
+position = Vector2(189, -23)
+sprite_frames = SubResource("SpriteFrames_xfgdl")
+animation = &"walk"
 
 [connection signal="body_entered" from="scene2/Area2D" to="scene2/CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="scene2/Area2D" to="scene2/CharacterBody2D" method="_on_area_2d_body_exited"]

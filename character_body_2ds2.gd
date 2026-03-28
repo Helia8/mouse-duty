@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
+@onready var _animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 	velocity = Vector2.ZERO
@@ -11,6 +11,10 @@ func _physics_process(delta):
 	velocity.x = Input.get_axis("ui_left", "ui_right") * 200
 	velocity.y = Input.get_axis("ui_up", "ui_down") * 200
 
+	if (velocity.x != 0 || velocity.y != 0):
+		_animated_sprite.play("walk")
+	else :
+		_animated_sprite.stop()
 	move_and_slide()
 
 
