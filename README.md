@@ -23,3 +23,28 @@ weather reading -> solar energy
 sleeping/ eating -> actions points 
 entairtainment/gym = sanity
 sanity: 70% -> nothing;  50% -> mild; 20% -> severe; 0% -> insane 
+
+
+daydream mechanic: waste an action to have a chance to predict tommorow's event
+blackout event: no more light (only sprite is like 2 floating eyes in the dark, with maybe some machine's leds) + maybe flashlight 
+rat population: background details, slowly increasing over time, if too much, increase chance of loosing food and whatnot, 
+crawl around the base (visible sprite), you can catch them if you go next to them and press E
+
+
+Job:
+	Snow height reading and reporting (go outside, and remember a number)
+	sky/cloud/ozone observation (observatory room in the base)
+	wind reading (machine in the base)
+	temp reading (machine in the base)
+	
+maintenance:
+	heater check
+	cleaning base (if not done, sanity decrease)
+	
+	
+	
+sanity mechanics:
+	at low: hallucinations
+	misread some infos 
+	low energy
+	moving items (you forget, flashlight)
