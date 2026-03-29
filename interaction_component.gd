@@ -22,6 +22,8 @@ func interaction_area_entered(body: Node2D) -> void:
 	if not body is CharacterBody2D:
 		return
 	sprite.visible = true
+	body.current_interactable = self
+	interact(body)
 	pass # Replace with function body.
 
 
@@ -29,6 +31,9 @@ func interaction_area_exited(body: Node2D) -> void:
 	if not body is CharacterBody2D:
 		return
 	sprite.visible = false
+	if body.current_interactable == self:
+			body.current_interactable = null
+	
 	pass # Replace with function body.
 	
 func interact(body):

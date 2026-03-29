@@ -50,6 +50,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_otv2m"]
 radius = 87.91281
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_i8grw"]
+radius = 68.0294
+
 [node name="Node" type="Node" unique_id=486720173]
 
 [node name="scene1" type="Node2D" parent="." unique_id=547889349]
@@ -96,6 +99,16 @@ polygon = PackedVector2Array(-7, 2, -246, -120, -339, -71, -456, -138, -377, -18
 position = Vector2(1518, 744)
 scale = Vector2(0.802, 0.8)
 
+[node name="MaintenanceEntrance" type="Node2D" parent="scene1" unique_id=985258325]
+position = Vector2(606, 671)
+
+[node name="MaintenanceTeleport" type="Area2D" parent="scene1" unique_id=2145357642]
+position = Vector2(533, 618)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/MaintenanceTeleport" unique_id=1302001448]
+position = Vector2(-1, -23)
+shape = SubResource("CircleShape2D_i8grw")
+
 [node name="InteractionArea" parent="." unique_id=1010782511 instance=ExtResource("13_pcdol")]
 position = Vector2(922, 637)
 scale = Vector2(0.8360723, 1)
@@ -109,5 +122,7 @@ position = Vector2(4.7842865, -238)
 
 [connection signal="body_entered" from="scene1/BedroomTeleport" to="scene1/PlayerCharacter" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="scene1/BedroomTeleport" to="scene1/PlayerCharacter" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="scene1/MaintenanceTeleport" to="scene1/PlayerCharacter" method="_on_maintenance_teleport_body_entered"]
+[connection signal="interacted" from="InteractionArea" to="scene1/PlayerCharacter" method="_on_interaction_area_interacted_computer"]
 
 [editable path="InteractionArea"]

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://rur8ayy5ptef"]
+
+[node name="Control" type="Control" unique_id=1862711856]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=960551999]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.984
+anchor_bottom = 0.924
+offset_right = -1040.668
+offset_bottom = -517.1638
+scale = Vector2(12.1959095, 7.341751)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2061511054]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=628982448]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "dialogue text
+example"
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer" unique_id=1177801707]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "button text
+example"

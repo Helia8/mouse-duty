@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://b22rak7hk0avc"]
+
+[ext_resource type="Texture2D" uid="uid://by2i52a5kura0" path="res://sprites/room_maintenance.png" id="1_h1qgm"]
+[ext_resource type="Script" uid="uid://cfrux3yhm7reo" path="res://nina_maintenance.gd" id="2_jyxli"]
+[ext_resource type="Texture2D" uid="uid://bmn4lvdym06g0" path="res://sprites/walk/0001.png" id="3_jvday"]
+[ext_resource type="Texture2D" uid="uid://brcp68ji5pgj5" path="res://sprites/walk/0002.png" id="4_bb4q2"]
+[ext_resource type="Texture2D" uid="uid://yhbyal485psi" path="res://sprites/walk/0003.png" id="5_r57tn"]
+[ext_resource type="Texture2D" uid="uid://5qhf5fqnw0mr" path="res://sprites/walk/0004.png" id="6_bgacj"]
+[ext_resource type="Texture2D" uid="uid://70qrbku04awc" path="res://sprites/walk/0005.png" id="7_tioik"]
+[ext_resource type="Texture2D" uid="uid://b25dm5kheft4n" path="res://sprites/walk/0006.png" id="8_2i52w"]
+[ext_resource type="Texture2D" uid="uid://da51pr1mloy26" path="res://sprites/walk/0007.png" id="9_bwhmq"]
+[ext_resource type="Texture2D" uid="uid://1itcgltrjwtm" path="res://sprites/walk/0008.png" id="10_tk270"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6viw"]
+size = Vector2(77, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmo86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jvday")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bb4q2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r57tn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bgacj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tioik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2i52w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bwhmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tk270")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7w8ke"]
+radius = 65.12296
+
+[node name="Node" type="Node" unique_id=1329955799]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2024754219]
+
+[node name="RoomMaintenance" type="Sprite2D" parent="Node2D" unique_id=1185989791]
+position = Vector2(760.00006, 461)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_h1qgm")
+
+[node name="Camera2D" type="Camera2D" parent="Node2D" unique_id=1606244204]
+position = Vector2(817, 459)
+zoom = Vector2(0.7, 0.7)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D" unique_id=345316302]
+position = Vector2(731, 634)
+script = ExtResource("2_jyxli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CharacterBody2D" unique_id=1911307102]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_k6viw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/CharacterBody2D" unique_id=193133292]
+position = Vector2(0, -83)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_xmo86")
+
+[node name="MainRoomTeleport" type="Area2D" parent="Node2D" unique_id=2033448674]
+position = Vector2(1080, 872)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/MainRoomTeleport" unique_id=182158621]
+shape = SubResource("CircleShape2D_7w8ke")
+
+[node name="MaintenanceEntrance" type="Node2D" parent="Node2D" unique_id=794581162]
+position = Vector2(1009, 774)
+
+[connection signal="body_entered" from="Node2D/MainRoomTeleport" to="Node2D/CharacterBody2D" method="_on_main_room_teleport_body_entered"]
