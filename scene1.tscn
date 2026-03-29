@@ -12,9 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b737xnpscukga" path="res://sprites/room_main.png" id="10_ivjb3"]
 [ext_resource type="Script" uid="uid://d2qjtmmfdl4h" path="res://computer_interact.gd" id="11_i8grw"]
 [ext_resource type="Texture2D" uid="uid://cao1r6lgmq2w" path="res://sprites/interaction_wobble/001.png" id="11_xw712"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqyvl"]
-size = Vector2(1147, 66)
+[ext_resource type="PackedScene" uid="uid://b8avxqbb2tmtl" path="res://InteractionComponent.tscn" id="13_pcdol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otv2m"]
 size = Vector2(150.5, 42.961807)
@@ -99,13 +97,6 @@ a = Vector2(-179.99994, 101.25)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivjb3"]
 radius = 68.18358
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_g2ved"]
-a = Vector2(2, 10)
-b = Vector2(7, -37)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_mhfj7"]
-b = Vector2(47, -46)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_btxjs"]
 radius = 92.021736
 
@@ -124,13 +115,6 @@ animations = [{
 
 [node name="scene1" type="Node2D" parent="." unique_id=547889349]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="scene1" unique_id=586385555]
-position = Vector2(425, 42)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D" unique_id=1301251452]
-position = Vector2(-2, -461)
-shape = SubResource("RectangleShape2D_hqyvl")
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="scene1" unique_id=1855870532]
 top_level = true
 position = Vector2(1090, 802)
@@ -147,7 +131,7 @@ animation = &"walk"
 frame_progress = 0.2886978
 
 [node name="Area2D" type="Area2D" parent="scene1" unique_id=1359800454]
-position = Vector2(1585, 627)
+position = Vector2(2810, 843)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/Area2D" unique_id=1492562262]
 shape = SubResource("CircleShape2D_otv2m")
@@ -240,36 +224,15 @@ position = Vector2(1107, 640)
 scale = Vector2(0.82190573, 0.82190573)
 texture = ExtResource("10_ivjb3")
 
-[node name="StaticBody2D14" type="StaticBody2D" parent="scene1" unique_id=143997433]
-position = Vector2(475, 743)
-scale = Vector2(0.8, 0.8)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D14" unique_id=1215638771]
-position = Vector2(181.58873, -101.21078)
-shape = SubResource("SegmentShape2D_r7qbo")
-
 [node name="Area2D2" type="Area2D" parent="scene1" unique_id=632641325]
-position = Vector2(1556, 693)
+position = Vector2(2286, 730)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/Area2D2" unique_id=455290320]
 position = Vector2(406, -18)
 shape = SubResource("CircleShape2D_ivjb3")
 
-[node name="StaticBody2D15" type="StaticBody2D" parent="scene1" unique_id=542262004]
-position = Vector2(1592, 751)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D15" unique_id=1847400416]
-shape = SubResource("SegmentShape2D_g2ved")
-
-[node name="StaticBody2D16" type="StaticBody2D" parent="scene1" unique_id=1395062096]
-position = Vector2(1452, 695)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/StaticBody2D16" unique_id=135302019]
-position = Vector2(1, 3)
-shape = SubResource("SegmentShape2D_mhfj7")
-
 [node name="computer_interact" type="Area2D" parent="scene1" unique_id=1734338907]
-position = Vector2(863, 728)
+position = Vector2(2788, 449)
 script = ExtResource("11_i8grw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/computer_interact" unique_id=1033681187]
@@ -283,9 +246,29 @@ scale = Vector2(0.08650284, 0.06651178)
 sprite_frames = SubResource("SpriteFrames_eptys")
 animation = &"interaction_wobble"
 
+[node name="WallsCollision" type="StaticBody2D" parent="scene1" unique_id=828853735]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="scene1/WallsCollision" unique_id=732945367]
+position = Vector2(1237, 1197)
+build_mode = 1
+polygon = PackedVector2Array(-3, -1, -246, -120, -339, -71, -456, -138, -377, -182, -862, -431, -721, -500, -744, -537, -628, -588, -610, -549, -465, -623, -456, -512, -24, -515, -24, -619, 237, -489, 279, -562, 368, -526, 356, -441, 598, -314, 594, -291)
+
+[node name="InteractionArea" parent="." unique_id=1010782511 instance=ExtResource("13_pcdol")]
+position = Vector2(922, 637)
+scale = Vector2(0.8360723, 1)
+
+[node name="InterationCollision" parent="InteractionArea" index="0" unique_id=804631875]
+position = Vector2(-9.56855, 6)
+
+[node name="InteractionPromptAnimatedSprite" parent="InteractionArea" index="1" unique_id=806869188]
+visible = false
+position = Vector2(4.7842865, -238)
+
 [connection signal="body_entered" from="scene1/Area2D" to="scene1/CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="scene1/Area2D" to="scene1/CharacterBody2D" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="scene1/Area2D2" to="scene1/CharacterBody2D" method="_trigger_door_scene1_prepapre"]
 [connection signal="body_exited" from="scene1/Area2D2" to="scene1/CharacterBody2D" method="trigger_door_scene_1_out"]
 [connection signal="body_entered" from="scene1/computer_interact" to="scene1/computer_interact" method="near_computer_enter"]
 [connection signal="body_exited" from="scene1/computer_interact" to="scene1/computer_interact" method="near_computer_exit"]
+
+[editable path="InteractionArea"]
