@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://b8avxqbb2tmtl"]
+[gd_scene format=3 uid="uid://bjklnsutpohyo"]
 
-[ext_resource type="Script" uid="uid://bshcvbuw0tnj6" path="res://interaction_component.gd" id="1_v22em"]
-[ext_resource type="Texture2D" uid="uid://cao1r6lgmq2w" path="res://sprites/interaction_wobble/001.png" id="2_nw5kq"]
+[ext_resource type="Script" path="res://interaction_component.gd" id="1_v22em"]
+[ext_resource type="Texture2D" uid="uid://dc1cjex2rd1up" path="res://sprites/interaction_wobble/button_interact.png" id="2_v22em"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fqhhg"]
 radius = 98.99495
@@ -10,7 +10,7 @@ radius = 98.99495
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_nw5kq")
+"texture": ExtResource("2_v22em")
 }],
 "loop": true,
 "name": &"interaction_prompt",
@@ -25,7 +25,6 @@ shape = SubResource("CircleShape2D_fqhhg")
 
 [node name="InteractionPromptAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=806869188]
 position = Vector2(1.9999771, -326)
-scale = Vector2(0.13544627, 0.11881753)
 sprite_frames = SubResource("SpriteFrames_rmh7n")
 animation = &"interaction_prompt"
 
