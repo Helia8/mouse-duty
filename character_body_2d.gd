@@ -37,6 +37,7 @@ func _process(delta):
 		return
 	if curr_interaction_area == "computer":
 		print("computer interacted")
+		get_tree().change_scene_to_file("res://MainMonitorMenu.tscn")
 		is_interacting = true
 
 

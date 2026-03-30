@@ -42,7 +42,7 @@ animations = [{
 "texture": ExtResource("10_tk270")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -63,7 +63,7 @@ position = Vector2(817, 459)
 zoom = Vector2(0.7, 0.7)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D" unique_id=345316302]
-position = Vector2(731, 634)
+position = Vector2(1011, 764)
 script = ExtResource("2_jyxli")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CharacterBody2D" unique_id=1911307102]
@@ -74,6 +74,7 @@ shape = SubResource("RectangleShape2D_k6viw")
 position = Vector2(0, -83)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_xmo86")
+animation = &"walk"
 
 [node name="MainRoomTeleport" type="Area2D" parent="Node2D" unique_id=2033448674]
 position = Vector2(1080, 872)
@@ -83,5 +84,12 @@ shape = SubResource("CircleShape2D_7w8ke")
 
 [node name="MaintenanceEntrance" type="Node2D" parent="Node2D" unique_id=794581162]
 position = Vector2(1009, 774)
+
+[node name="WallsCollision" type="StaticBody2D" parent="Node2D" unique_id=1159282931]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/WallsCollision" unique_id=15841818]
+position = Vector2(1005, 838)
+build_mode = 1
+polygon = PackedVector2Array(-10, 11, -134, 71, -226, 70, -758, -196, -618, -196, -558, -247, -561, -341, -76, -582, -71, -472, 46, -412, 177, -483, 271, -448, 272, -402, 53, -289, 51, -243, 227, -152, 229, -103, 93, -43, 121, -21, 34, 45, 0, 6)
 
 [connection signal="body_entered" from="Node2D/MainRoomTeleport" to="Node2D/CharacterBody2D" method="_on_main_room_teleport_body_entered"]

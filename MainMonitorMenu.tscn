@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://d1i7gjabqwlbj"]
+
+[ext_resource type="Texture2D" uid="uid://cng08ox8xxcjd" path="res://sprites/pc-ui.png" id="1_hyy3j"]
+[ext_resource type="Script" uid="uid://cygp2f80mqt35" path="res://computer_controller.gd" id="2_bjq8a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjq8a"]
+size = Vector2(62, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87jmt"]
+size = Vector2(64, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eura4"]
+size = Vector2(64, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuhp4"]
+size = Vector2(66, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyy3j"]
+size = Vector2(59, 53)
+
+[node name="Node2D" type="Node2D" unique_id=738659040]
+
+[node name="PcUi" type="Sprite2D" parent="." unique_id=2925601]
+position = Vector2(558, 327)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_hyy3j")
+
+[node name="EnergyReading" type="Area2D" parent="." unique_id=1928672493]
+position = Vector2(233, 244)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnergyReading" unique_id=1298372219]
+position = Vector2(4, -3)
+shape = SubResource("RectangleShape2D_bjq8a")
+
+[node name="WindReading" type="Area2D" parent="." unique_id=1355478906]
+position = Vector2(242, 354)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindReading" unique_id=1664590833]
+position = Vector2(-1, -3.5)
+shape = SubResource("RectangleShape2D_87jmt")
+
+[node name="TemperatureReading" type="Area2D" parent="." unique_id=697191036]
+position = Vector2(244, 473)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TemperatureReading" unique_id=1463163769]
+position = Vector2(2, 3.5)
+shape = SubResource("RectangleShape2D_eura4")
+
+[node name="MeteoReading" type="Area2D" parent="." unique_id=1822442666]
+position = Vector2(349, 235)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeteoReading" unique_id=1748722779]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_yuhp4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1207665132]
+position = Vector2(572, 329)
+
+[node name="ExitMenu" type="Area2D" parent="." unique_id=1255318168]
+position = Vector2(936, 102)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitMenu" unique_id=1197543371]
+position = Vector2(5.5, -0.5)
+shape = SubResource("RectangleShape2D_hyy3j")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=751382923]
+script = ExtResource("2_bjq8a")
+
+[connection signal="mouse_entered" from="ExitMenu" to="CharacterBody2D" method="_on_exit_menu_mouse_entered"]
+[connection signal="mouse_exited" from="ExitMenu" to="CharacterBody2D" method="_on_exit_menu_mouse_exited"]
