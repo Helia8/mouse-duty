@@ -3,57 +3,62 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var _animated_sprite = $AnimatedSprite2D
-var curr_interaction_area = ""
 var current_interactable: Area2D = null
-var is_interacting = false
 
 func _ready():
 	if Global.next_spawn_point != "":
 		var spawn = get_parent().get_node_or_null(Global.next_spawn_point)
 		if spawn:
-			print("spawn")
 			global_position = spawn.global_position
-		else:
-			print("no spawn")
 	Global.next_spawn_point = ""
-	
-	
-func _physics_process(delta):
-	velocity = Vector2.ZERO
+	_build_walk_animations()
 
-	velocity.x = Input.get_axis("ui_left", "ui_right") * 200
-	velocity.y = Input.get_axis("ui_up", "ui_down") * 200
+func _build_walk_animations() -> void:
+	var sf = SpriteFrames.new()
+	for dir in ["walk_down", "walk_up", "walk_left", "walk_right"]:
+		sf.add_animation(dir)
+		sf.set_animation_loop(dir, true)
+		sf.set_animation_speed(dir, 8.0)
+		for i in range(8):
+			var tex = load("res://sprites/walk/%s_%02d.png" % [dir, i]) as Texture2D
+			if tex:
+				sf.add_frame(dir, tex)
+	_animated_sprite.sprite_frames = sf
+	_animated_sprite.animation = "walk_down"
 
-	if (velocity.x != 0 || velocity.y != 0):
-		_animated_sprite.play("walk")
-	else :
+func _physics_process(_delta):
+	var vx = Input.get_axis("ui_left", "ui_right")
+	var vy = Input.get_axis("ui_up", "ui_down")
+	velocity = Vector2(vx, vy) * 200
+
+	if velocity.length() > 0:
+		if abs(vx) >= abs(vy):
+			_animated_sprite.play("walk_right" if vx > 0 else "walk_left")
+		else:
+			_animated_sprite.play("walk_down" if vy > 0 else "walk_up")
+	else:
 		_animated_sprite.stop()
 	move_and_slide()
 
-func _process(delta):
-	var interacted = Input.is_key_pressed(KEY_E)
-	if (!interacted || is_interacting):
+func _input(event):
+	if not (event is InputEventKey and event.pressed and not event.echo):
 		return
-	if curr_interaction_area == "computer":
-		print("computer interacted")
-		is_interacting = true
+	if event.keycode != KEY_E or current_interactable == null:
+		return
 
+	var tag = current_interactable.get_meta("interaction_tag", "")
+	if tag == "boiler":
+		_use_boiler()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-
-
-	pass # Replace with function body.
-
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	
-	pass # Replace with function body.
-
-
-
+func _use_boiler() -> void:
+	if not Global.use_action():
+		return  # out of actions
+	Global.boiler_charge = mini(Global.boiler_charge + 1, Global.BOILER_MAX_CHARGE)
+	# Darkness resolution
+	if Global.darkness_active and Global.flashlight_object == "boiler":
+		Global.resolve_darkness()
 
 func _on_main_room_teleport_body_entered(body: Node2D) -> void:
 	if body == self:
 		Global.next_spawn_point = "MaintenanceEntrance"
 		get_tree().change_scene_to_file("res://scene1.tscn")
-	pass # Replace with function body.

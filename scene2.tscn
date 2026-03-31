@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://da51pr1mloy26" path="res://sprites/walk/0007.png" id="8_un2r7"]
 [ext_resource type="Texture2D" uid="uid://1itcgltrjwtm" path="res://sprites/walk/0008.png" id="9_sa2wl"]
 [ext_resource type="Texture2D" uid="uid://yypt26mqv5u5" path="res://sprites/room_bedroom.png" id="10_vuhtq"]
+[ext_resource type="PackedScene" uid="uid://bjklnsutpohyo" path="res://InteractionComponent.tscn" id="11_bedic"]
+[ext_resource type="Texture2D" uid="uid://3v2u0cbogo4c" path="res://sprites/rat_watching_tv.png" id="12_rat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g28hq"]
 size = Vector2(155, 53.75)
@@ -46,10 +48,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bed01"]
+radius = 164.04877
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_vuhtq"]
 radius = 104.019226
 
-[node name="Node" type="Node" unique_id=737464078]
+[node name="Node2" type="Node" unique_id=737464078]
 
 [node name="scene2" type="Node2D" parent="." unique_id=1874493268]
 position = Vector2(-1, 0)
@@ -86,6 +91,31 @@ position = Vector2(681, 760)
 build_mode = 1
 polygon = PackedVector2Array(-53, -303, -383, -191, -486, -146, -625, -224, -536, -270, -657, -337, -611, -360, -558, -326, -446, -374, -357, -333, -158, -433, -103, -377, -10, -400, -9, -459, 457, -227, 133, -68, 107, -245)
 
+[node name="BedInteraction" parent="scene2" unique_id=304403074 instance=ExtResource("11_bedic")]
+position = Vector2(729, 241)
+metadata/interaction_tag = "bed"
+
+[node name="InterationCollision" parent="scene2/BedInteraction" index="0" unique_id=804631875]
+position = Vector2(-387, 61)
+shape = SubResource("CircleShape2D_bed01")
+
+[node name="InteractionPromptAnimatedSprite" parent="scene2/BedInteraction" index="1" unique_id=806869188]
+visible = false
+position = Vector2(-359, -63)
+scale = Vector2(0.7, 0.7)
+
+[node name="BeanbagInteraction" parent="scene2" unique_id=304403080 instance=ExtResource("11_bedic")]
+position = Vector2(659, 504)
+metadata/interaction_tag = "beanbag"
+
+[node name="InteractionPromptAnimatedSprite" parent="scene2/BeanbagInteraction" index="1" unique_id=806869188]
+visible = false
+
+[node name="RatSprite" type="Sprite2D" parent="scene2" unique_id=304403090]
+visible = false
+position = Vector2(633, 502)
+texture = ExtResource("12_rat")
+
 [node name="MainRoomTeleport" type="Area2D" parent="scene2" unique_id=304403073]
 position = Vector2(207, 724)
 
@@ -94,3 +124,6 @@ position = Vector2(-87, -106)
 shape = SubResource("CircleShape2D_vuhtq")
 
 [connection signal="body_entered" from="scene2/MainRoomTeleport" to="scene2/CharacterBody2D" method="_on_main_room_teleport_body_entered"]
+
+[editable path="scene2/BedInteraction"]
+[editable path="scene2/BeanbagInteraction"]

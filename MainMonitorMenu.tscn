@@ -66,5 +66,13 @@ shape = SubResource("RectangleShape2D_hyy3j")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=751382923]
 script = ExtResource("2_bjq8a")
 
+[connection signal="mouse_entered" from="EnergyReading" to="CharacterBody2D" method="_on_energy_reading_mouse_entered"]
+[connection signal="mouse_exited" from="EnergyReading" to="CharacterBody2D" method="_on_energy_reading_mouse_exited"]
+[connection signal="mouse_entered" from="WindReading" to="CharacterBody2D" method="_on_wind_reading_mouse_entered"]
+[connection signal="mouse_exited" from="WindReading" to="CharacterBody2D" method="_on_wind_reading_mouse_exited"]
+[connection signal="mouse_entered" from="TemperatureReading" to="CharacterBody2D" method="_on_temp_reading_mouse_entered"]
+[connection signal="mouse_exited" from="TemperatureReading" to="CharacterBody2D" method="_on_temp_reading_mouse_exited"]
+[connection signal="mouse_entered" from="MeteoReading" to="CharacterBody2D" method="_on_meteo_reading_mouse_entered"]
+[connection signal="mouse_exited" from="MeteoReading" to="CharacterBody2D" method="_on_meteo_reading_mouse_exited"]
 [connection signal="mouse_entered" from="ExitMenu" to="CharacterBody2D" method="_on_exit_menu_mouse_entered"]
 [connection signal="mouse_exited" from="ExitMenu" to="CharacterBody2D" method="_on_exit_menu_mouse_exited"]

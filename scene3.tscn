@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b25dm5kheft4n" path="res://sprites/walk/0006.png" id="8_2i52w"]
 [ext_resource type="Texture2D" uid="uid://da51pr1mloy26" path="res://sprites/walk/0007.png" id="9_bwhmq"]
 [ext_resource type="Texture2D" uid="uid://1itcgltrjwtm" path="res://sprites/walk/0008.png" id="10_tk270"]
+[ext_resource type="PackedScene" uid="uid://bjklnsutpohyo" path="res://InteractionComponent.tscn" id="11_boilr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6viw"]
 size = Vector2(77, 22)
@@ -76,6 +77,13 @@ scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_xmo86")
 animation = &"walk"
 
+[node name="BoilerInteraction" parent="Node2D" unique_id=700000001 instance=ExtResource("11_boilr")]
+position = Vector2(391, 565)
+metadata/interaction_tag = "boiler"
+
+[node name="InteractionPromptAnimatedSprite" parent="Node2D/BoilerInteraction" index="1" unique_id=806869188]
+visible = false
+
 [node name="MainRoomTeleport" type="Area2D" parent="Node2D" unique_id=2033448674]
 position = Vector2(1080, 872)
 
@@ -93,3 +101,5 @@ build_mode = 1
 polygon = PackedVector2Array(-10, 11, -134, 71, -226, 70, -758, -196, -618, -196, -558, -247, -561, -341, -76, -582, -71, -472, 46, -412, 177, -483, 271, -448, 272, -402, 53, -289, 51, -243, 227, -152, 229, -103, 93, -43, 121, -21, 34, 45, 0, 6)
 
 [connection signal="body_entered" from="Node2D/MainRoomTeleport" to="Node2D/CharacterBody2D" method="_on_main_room_teleport_body_entered"]
+
+[editable path="Node2D/BoilerInteraction"]

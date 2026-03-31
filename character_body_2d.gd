@@ -12,22 +12,34 @@ func _ready():
 	if Global.next_spawn_point != "":
 		var spawn = get_parent().get_node_or_null(Global.next_spawn_point)
 		if spawn:
-			print("spawn")
 			global_position = spawn.global_position
-		else:
-			print("no spawn")
 	Global.next_spawn_point = ""
-	
-	
-func _physics_process(delta):
-	velocity = Vector2.ZERO
+	_build_walk_animations()
 
-	velocity.x = Input.get_axis("ui_left", "ui_right") * 200
-	velocity.y = Input.get_axis("ui_up", "ui_down") * 200
+func _build_walk_animations() -> void:
+	var sf = SpriteFrames.new()
+	for dir in ["walk_down", "walk_up", "walk_left", "walk_right"]:
+		sf.add_animation(dir)
+		sf.set_animation_loop(dir, true)
+		sf.set_animation_speed(dir, 8.0)
+		for i in range(8):
+			var tex = load("res://sprites/walk/%s_%02d.png" % [dir, i]) as Texture2D
+			if tex:
+				sf.add_frame(dir, tex)
+	_animated_sprite.sprite_frames = sf
+	_animated_sprite.animation = "walk_down"
 
-	if (velocity.x != 0 || velocity.y != 0):
-		_animated_sprite.play("walk")
-	else :
+func _physics_process(_delta):
+	var vx = Input.get_axis("ui_left", "ui_right")
+	var vy = Input.get_axis("ui_up", "ui_down")
+	velocity = Vector2(vx, vy) * 200
+
+	if velocity.length() > 0:
+		if abs(vx) >= abs(vy):
+			_animated_sprite.play("walk_right" if vx > 0 else "walk_left")
+		else:
+			_animated_sprite.play("walk_down" if vy > 0 else "walk_up")
+	else:
 		_animated_sprite.stop()
 	move_and_slide()
 
