@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://b737xnpscukga" path="res://sprites/room_main.png" id="10_ivjb3"]
 [ext_resource type="PackedScene" uid="uid://bjklnsutpohyo" path="res://InteractionComponent.tscn" id="13_pcdol"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_otv2m"]
-size = Vector2(150.5, 42.961807)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i8grw"]
+radius = 25.001099
+height = 114.713135
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vfwod"]
 animations = [{
@@ -59,15 +60,18 @@ radius = 68.0294
 
 [node name="PlayerCharacter" type="CharacterBody2D" parent="scene1" unique_id=1855870532]
 top_level = true
-position = Vector2(1357, 778)
+position = Vector2(1223, 657)
 scale = Vector2(0.802, 0.8)
 script = ExtResource("1_p20re")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene1/PlayerCharacter" unique_id=1437326975]
-position = Vector2(1.8985114, 138.97716)
-shape = SubResource("RectangleShape2D_otv2m")
+position = Vector2(2.8848648e-05, 137.5001)
+rotation = -1.5716609
+shape = SubResource("CapsuleShape2D_i8grw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="scene1/PlayerCharacter" unique_id=1026956874]
+position = Vector2(-2.4937656, 33.75)
+scale = Vector2(0.825, 0.825)
 sprite_frames = SubResource("SpriteFrames_vfwod")
 animation = &"walk"
 frame_progress = 0.2886978
@@ -80,7 +84,7 @@ shape = SubResource("CircleShape2D_otv2m")
 
 [node name="Camera2D" type="Camera2D" parent="scene1" unique_id=295411562]
 position = Vector2(1096, 666)
-zoom = Vector2(0.55, 0.55)
+zoom = Vector2(0.415, 0.415)
 
 [node name="RoomMain" type="Sprite2D" parent="scene1" unique_id=1106890077]
 show_behind_parent = true
@@ -93,7 +97,7 @@ texture = ExtResource("10_ivjb3")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="scene1/WallsCollision" unique_id=732945367]
 position = Vector2(1237, 1197)
 build_mode = 1
-polygon = PackedVector2Array(-7, 2, -246, -120, -339, -71, -456, -138, -377, -182, -873, -431, -721, -500, -744, -537, -628, -588, -610, -549, -465, -623, -456, -512, -24, -515, 89, -563, 242, -494, 279, -562, 368, -526, 356, -441, 606, -316, 618, -310)
+polygon = PackedVector2Array(107, -179, 6, -206, -55, -148, -135, -144, -141, -67, -246, -120, -339, -71, -463, -143, -380, -186, -872, -429, -729, -496, -744, -537, -628, -588, -611, -556, -461, -626, -456, -515, -30, -511, 46, -585, 239, -495, 279, -562, 375, -525, 362, -437, 606, -316, 618, -310, 201, -103)
 
 [node name="BedroomEntrance" type="Node2D" parent="scene1" unique_id=1426387474]
 position = Vector2(1518, 744)

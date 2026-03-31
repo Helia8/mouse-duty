@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://1itcgltrjwtm" path="res://sprites/walk/0008.png" id="9_sa2wl"]
 [ext_resource type="Texture2D" uid="uid://yypt26mqv5u5" path="res://sprites/room_bedroom.png" id="10_vuhtq"]
 [ext_resource type="PackedScene" uid="uid://bjklnsutpohyo" path="res://InteractionComponent.tscn" id="11_bedic"]
-[ext_resource type="Texture2D" uid="uid://3v2u0cbogo4c" path="res://sprites/rat_watching_tv.png" id="12_rat"]
+[ext_resource type="Texture2D" uid="uid://b0cx2d0vk44yn" path="res://sprites/rat_bedroom.png" id="12_33owt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g28hq"]
 size = Vector2(155, 53.75)
@@ -64,7 +64,8 @@ position = Vector2(253, 505)
 
 [node name="Camera2D" type="Camera2D" parent="scene2" unique_id=1097367107]
 position = Vector2(568, 333)
-zoom = Vector2(0.74, 0.74)
+scale = Vector2(9.800001, 4.7200003)
+zoom = Vector2(0.505, 0.505)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="scene2" unique_id=653457446]
 top_level = true
@@ -112,9 +113,8 @@ metadata/interaction_tag = "beanbag"
 visible = false
 
 [node name="RatSprite" type="Sprite2D" parent="scene2" unique_id=304403090]
-visible = false
-position = Vector2(633, 502)
-texture = ExtResource("12_rat")
+position = Vector2(557, 394)
+texture = ExtResource("12_33owt")
 
 [node name="MainRoomTeleport" type="Area2D" parent="scene2" unique_id=304403073]
 position = Vector2(207, 724)
